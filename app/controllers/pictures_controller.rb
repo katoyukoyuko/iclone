@@ -14,11 +14,19 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    # @picture = Picture.new
+
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
+  
 
   # GET /pictures/1/edit
   def edit
+    @picture.image.cache!
   end
 
   # POST /pictures
@@ -39,6 +47,9 @@ class PicturesController < ApplicationController
 
   # PATCH/PUT /pictures/1
   # PATCH/PUT /pictures/1.json
+
+
+
   def update
     respond_to do |format|
       if @picture.update(picture_params)
