@@ -32,7 +32,7 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params) #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
 
     respond_to do |format|
       if @picture.save
@@ -73,7 +73,8 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params) #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    render :new if @picture.invalid?
   end
 
   private
