@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
+    # @pictures = Picture.all.includes(:user)
     # @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
