@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @favorite = current_user.favorites
-    @user.image.cache!
+    @user.image.cache!   
   end
 
   def edit

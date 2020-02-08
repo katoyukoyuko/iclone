@@ -4,6 +4,7 @@
 
 <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
 
-<%= link_to 'edit', edit_user_path(@user)%>
-
-<%= link_to 'Favorite lists', favorites_path(@favorite)%>
+<% if @user == current_user %>
+ <p><%= link_to 'edit', edit_user_path(@user)%></p>
+ <p><%= link_to 'Favorite lists', favorites_path(@favorite)%></p>
+<% end %>
