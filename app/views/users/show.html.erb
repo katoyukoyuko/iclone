@@ -2,4 +2,8 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
+<%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+
+<%= link_to 'edit', edit_user_path(@user)%>
+
 <%= link_to 'Favorite lists', favorites_path(@favorite)%>

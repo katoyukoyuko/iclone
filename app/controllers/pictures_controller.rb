@@ -5,8 +5,6 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
-    # @pictures = Picture.all.includes(:user)
-    # @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   # GET /pictures/1
@@ -17,8 +15,6 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    # @picture = Picture.new
-
     if params[:back]
       @picture = Picture.new(picture_params)
     else
@@ -50,9 +46,6 @@ class PicturesController < ApplicationController
 
   # PATCH/PUT /pictures/1
   # PATCH/PUT /pictures/1.json
-
-
-
   def update
     respond_to do |format|
       if @picture.update(picture_params)
