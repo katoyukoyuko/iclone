@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless current_user == @user
+      redirect_to user_path, notice: 'ほかのユーザーの投稿は編集できません'
+    end
   end
 
   def update

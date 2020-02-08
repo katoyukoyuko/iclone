@@ -11,7 +11,6 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
-    # user_id = @picture.user_id
   end
 
   # GET /pictures/new
@@ -22,11 +21,14 @@ class PicturesController < ApplicationController
       @picture = Picture.new
     end
   end
-  
 
   # GET /pictures/1/edit
   def edit
-    @picture.image.cache!
+    if current_user.id == @picture.user_id
+      @picture.image.cache!
+    else
+      redirect_to pictures_path, notice: 'ほかのユーザーの投稿は編集できません'
+    end
   end
 
   # POST /pictures
