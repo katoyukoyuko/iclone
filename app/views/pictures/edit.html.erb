@@ -1,6 +1,38 @@
 <h1>Editing Picture</h1>
 
-<%= render 'form', picture: @picture %>
+<%= form_with(model: @picture, local: true) do |form| %>
+
+    <% if @picture.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+  
+        <ul>
+        <% @picture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :image %>
+      <!-- 確認画面から新規作成画面に戻った時に、 -->
+      <!-- アップロードした画像を表示させるための記述 -->
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+      <%= form.file_field :image %>
+      <!-- hidden_fieldを用いて保存するときにキャッシュしたものを掘り出して値にセットする -->
+      <%= form.hidden_field :image_cache %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "投稿する" , class: 'btn btn-primary'%>
+    </div>
+  <% end %>  
 
 <%= link_to 'Show', @picture, class: 'btn btn-primary'%> |
 <%= link_to 'Back', pictures_path, class: 'btn btn-primary'%>
