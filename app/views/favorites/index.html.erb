@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <%= @favorite.each do |favorite| %>
+    <% @favorite.each do |favorite| %>
         <tr>
         <td><%= image_tag favorite.picture.image.url %></td>
         <td><%= favorite.picture.content %></td>
