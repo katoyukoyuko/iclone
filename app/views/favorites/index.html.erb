@@ -14,7 +14,7 @@
         <td><%= image_tag favorite.picture.image.url %></td>
         <td><%= favorite.picture.content %></td>
         <td><%= favorite.user.name %></td>
-        <td><%= link_to 'Show', favorite.picture %></td>
+        <td><%= link_to 'Show', favorite.picture, class: 'btn btn-primary'%></td>
         </tr>
     <% end %>
     </tbody>

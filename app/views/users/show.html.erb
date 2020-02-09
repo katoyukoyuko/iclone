@@ -5,6 +5,6 @@
 <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
 
 <% if @user == current_user %>
- <p><%= link_to 'edit', edit_user_path(@user)%></p>
- <p><%= link_to 'Favorite lists', favorites_path(@favorite)%></p>
+ <p><%= link_to 'edit', edit_user_path(@user), class: 'btn btn-primary'%></p>
+ <p><%= link_to 'Favorite lists', favorites_path(@favorite), class: 'btn btn-primary' %></p>
 <% end %>

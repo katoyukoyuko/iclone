@@ -11,17 +11,26 @@
 
   <body>
     <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+      <dev class="alert alert-primary" role="alert"><%= content_tag(:div, value, class: "#{key}") %></dev>
     <% end %>
 
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-brand"><%= link_to "Picture", pictures_path , class:"nav-link" %></div>
+      
+        <% if logged_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Profile", user_path(current_user.id) %></li>
+          <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Sign up", new_user_path %></li>
+          <li><%= link_to "Login", new_session_path %></li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

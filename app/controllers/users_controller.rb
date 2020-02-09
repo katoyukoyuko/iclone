@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites
+    if logged_in?
+      @favorite = current_user.favorites
+    end
     @user.image.cache!   
   end
 

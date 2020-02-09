@@ -5,11 +5,11 @@
   <p>content:<%= @picture.content %></p>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
-  <%= form.submit "投稿する" %>
+  <%= form.submit "投稿する", class: 'btn btn-primary' %>
 <% end %>
 
 <%= form_with(model:@picture, url:new_picture_path(@picture), local:true, method:"get") do |form| %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
-  <%= form.submit "戻る", name: "back" %>
+  <%= form.submit "戻る", name: "back", class: 'btn btn-primary' %>
 <% end %>
