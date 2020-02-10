@@ -20,7 +20,9 @@
     <tbody>
       <% @pictures.each do |picture| %>
         <tr>
-          <td><%= image_tag picture.image.url, width: "200px" %></td>
+          <td><% if picture.image && picture.image.url %>
+                <%= image_tag picture.image.url, width: "200px" %>
+              <% end %></td>
           <td><%= picture.content %></td>
           <td><%= picture.user.name %></td>
           <td><%= link_to 'Show', picture, class: 'btn btn-primary'%></td>
